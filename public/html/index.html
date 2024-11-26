@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incio de sesión</title>
+  <link rel="stylesheet" href="public/css/styles.css">
+  <link rel="icon" href="public/images/icon-head.png" type="png">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 id="title" class="text-center">Schedule Planner</h1>
+      <p id="description" class="description text-center">
+        ¡Es momento de organizarse!
+      </p>
+    </header>
+    <form id="survey-form" onsubmit="return validateUser();">
+      <div class="form-group">
+        <label id="email-label" for="email">Email</label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="Enter your Email" required>
+      </div>
+      <div class="form-group">
+        <label id="password-label" for="password">Contraseña</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" id="submit" class="submit-button">
+          Iniciar sesión
+        </button>
+        <button type="button" id="register" class="register-button" onclick="window.location.href='/registro';">
+          Regístrate
+        </button>
+      </div>
+    </form>
+    <p id="message" class="text-center"></p>
+  </div>
+
+  <script src="src/index_html.js"></script>
+</body>
+</html>
