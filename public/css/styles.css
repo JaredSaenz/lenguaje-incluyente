@@ -1,0 +1,396 @@
+:root {
+    --color-purple: #8A2BE2;
+    --color-cream: #FFFDD0;
+    --color-dark-purple: #4B0082;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1523609831130-b5d649e73372?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-cream);
+    line-height: 1.6;
+}
+
+.global-nav {
+    background-color: rgba(138, 43, 226, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.global-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 44px;
+}
+
+.global-nav ul li {
+    margin: 0 15px;
+}
+
+.global-nav ul li a {
+    color: var(--color-cream);
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.global-nav ul li a:hover,
+.global-nav ul li a.active {
+    opacity: 1;
+}
+
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 44px 20px 0;
+}
+
+h1 {
+    font-size: 56px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--color-cream);
+}
+
+.subtitle {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: var(--color-cream);
+    opacity: 0.8;
+}
+
+.learn-more {
+    color: var(--color-purple);
+    text-decoration: none;
+    font-size: 21px;
+    transition: opacity 0.3s ease;
+}
+
+.learn-more:hover {
+    opacity: 0.7;
+}
+
+.content {
+    display: none;
+    padding: 100px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.content.active {
+    display: block;
+}
+
+.hero-section h1,
+.hero-section .subtitle,
+.content h2,
+.content p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 734px) {
+    .global-nav ul {
+        padding: 0 10px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .subtitle {
+        font-size: 21px;
+    }
+
+    .learn-more {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 500px) {
+    .global-nav ul {
+        justify-content: space-between;
+    }
+
+    .global-nav ul li {
+        margin: 0 5px;
+    }
+}
+
+/* Agregar estos estilos al CSS existente */
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.timeline-item.left {
+    left: 0;
+    padding-right: 40px;
+}
+
+.timeline-item.right {
+    left: 50%;
+    padding-left: 40px;
+}
+
+.timeline-bubble {
+    position: relative;
+    background: rgba(138, 43, 226, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(138, 43, 226, 0.3);
+}
+
+.timeline-bubble::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(138, 43, 226, 0.2);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.timeline-item.left .timeline-bubble::after {
+    right: -20px;
+    clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+
+.timeline-item.right .timeline-bubble::after {
+    left: -20px;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.timeline-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid var(--color-cream);
+}
+
+.timeline-content {
+    text-align: center;
+}
+
+.timeline-content h3 {
+    color: var(--color-cream);
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.timeline-content p {
+    color: var(--color-cream);
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.timeline-bubble:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .timeline-item {
+        width: 100%;
+        left: 0;
+        padding: 0 20px;
+    }
+
+    .timeline-item.right {
+        left: 0;
+    }
+
+    .timeline-bubble::after {
+        display: none;
+    }
+
+    .timeline-bubble {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+/* Añadir estos estilos al archivo CSS existente */
+
+.carousel {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: rgba(138, 43, 226, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 253, 208, 0.3);
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.carousel-slide h3 {
+    color: var(--color-purple);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.carousel-slide p {
+    color: var(--color-cream);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.carousel-nav {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.carousel-nav button {
+    background: var(--color-purple);
+    color: var(--color-cream);
+    border: none;
+    padding: 10px 15px;
+    margin: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-nav button:hover {
+    background-color: var(--color-dark-purple);
+}
+
+.carousel-nav button:focus {
+    outline: 2px solid var(--color-cream);
+    outline-offset: 2px;
+}
+
+.hero-section h1,
+.hero-section .subtitle,
+.content h2,
+.content p {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.content {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.hero-section {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+.subtitle {
+    opacity: 1;
+}
+
+.timeline-content h3,
+.timeline-content p {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.timeline-bubble {
+    background: rgba(138, 43, 226, 0.4);
+}
+
+@media (max-width: 768px) {
+    .carousel {
+        max-width: 90%;
+    }
+
+    .carousel-slide h3 {
+        font-size: 20px;
+    }
+
+    .carousel-slide p {
+        font-size: 14px;
+    }
+}
+
