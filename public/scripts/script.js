@@ -74,3 +74,50 @@ document.addEventListener('DOMContentLoaded', function() {
     prevButton.addEventListener('click', updateAriaLabels);
 });
 
+// Añadir este código al final del archivo JavaScript existente
+
+document.addEventListener('DOMContentLoaded', function() {
+    const tipsList = document.getElementById('tips-list');
+    const toggleLentesButton = document.getElementById('toggle-lentes');
+    const ejemploParrafo = document.getElementById('ejemplo-parrafo');
+
+    // Tips y recomendaciones
+    const tips = [
+        "Usa términos neutros o inclusivos como 'personas' en lugar de 'hombres'.",
+        "Evita el uso del masculino genérico para referirte a grupos mixtos.",
+        "Utiliza el desdoblamiento de género con moderación (ej. 'trabajadoras y trabajadores').",
+        "Emplea estrategias como la omisión del sujeto o el uso de pronombres neutros.",
+        "Presta atención a los estereotipos de género en tus ejemplos e ilustraciones."
+    ];
+
+    // Cargar tips dinámicamente
+    tips.forEach(tip => {
+        const li = document.createElement('li');
+        li.textContent = tip;
+        tipsList.appendChild(li);
+    });
+
+    // Función para aplicar correcciones al párrafo
+    function aplicarCorrecciones(texto) {
+        return texto
+            .replace(/Los empleados/g, '<span class="correccion" title="Sugerencia: El personal">Los empleados</span>')
+            .replace(/sus jefes/g, '<span class="correccion" title="Sugerencia: la dirección">sus jefes</span>')
+            .replace(/Cada uno/g, '<span class="correccion" title="Sugerencia: Cada persona">Cada uno</span>');
+    }
+
+    // Toggle para activar/desactivar los lentes violeta
+    toggleLentesButton.addEventListener('click', function() {
+        ejemploParrafo.classList.toggle('lentes-activos');
+        const img = this.querySelector('img');
+        if (ejemploParrafo.classList.contains('lentes-activos')) {
+            ejemploParrafo.innerHTML = aplicarCorrecciones(ejemploParrafo.textContent);
+            img.src = 'public/images/gafas_violeta.webp';
+            this.setAttribute('aria-label', 'Desactivar lentes violeta');
+        } else {
+            ejemploParrafo.innerHTML = ejemploParrafo.textContent;
+            img.src = 'public/images/gafas_violeta.webp';
+            this.setAttribute('aria-label', 'Activar lentes violeta');
+        }
+    });
+});
+
