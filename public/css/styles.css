@@ -328,16 +328,20 @@ main {
     z-index: 1000;
 }
 
+/* Ajuste para pantallas más pequeñas (móviles) */
 @media (max-width: 768px) {
     .lentes-button {
-        right: 10px;
-        width: 80px; /* Ajuste para pantallas más pequeñas */
-        height: 80px; /* Ajuste para pantallas más pequeñas */
+        width: 90px; /* Botón mucho más grande en pantallas pequeñas */
+        height: 90px; /* Botón mucho más grande en pantallas pequeñas */
+        right: 5%; /* Ajuste más a la derecha */
+        top: 50%; /* Se mantiene centrado verticalmente */
+        transform: translateY(-50%); /* Se mantiene centrado verticalmente */
     }
 
     .lentes-button img {
-        width: 40px; /* Aumento del tamaño de la imagen dentro del botón */
-        height: 40px;
+        width: 100%; /* Imagen toma el 100% del ancho del botón */
+        height: 100%; /* Imagen toma el 100% de la altura del botón */
+        object-fit: contain; /* Mantiene la relación de aspecto original */
     }
 }
 
