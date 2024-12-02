@@ -312,7 +312,7 @@ main {
 .lentes-button {
     position: fixed;
     right: 10px;
-    top: 50%;
+    top: 35%;
     transform: translateY(-50%);
     background-color: var(--color-purple);
     border: none;
@@ -334,7 +334,7 @@ main {
         width: 90px; /* Botón mucho más grande en pantallas pequeñas */
         height: 90px; /* Botón mucho más grande en pantallas pequeñas */
         right: 5%; /* Ajuste más a la derecha */
-        top: 50%; /* Se mantiene centrado verticalmente */
+        top: 25%; /* Se mantiene centrado verticalmente */
         transform: translateY(-50%); /* Se mantiene centrado verticalmente */
     }
 
