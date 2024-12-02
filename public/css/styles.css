@@ -314,9 +314,9 @@ main {
 
 .lentes-button {
     position: fixed;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 10px;            /* Fijado en el lado derecho */
+    top: 100%;               /* Centrado verticalmente */
+    transform: translateY(-50%);  /* Ajuste preciso al 50% de la pantalla */
     background-color: var(--color-purple);
     border: none;
     border-radius: 50%;
@@ -329,16 +329,6 @@ main {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
     z-index: 1000;
-}
-
-.lentes-button:hover {
-    background-color: var(--color-dark-purple);
-}
-
-.lentes-button img {
-    width: 72px;
-    height: 72px;
-    object-fit: contain;
 }
 
 @media (max-width: 768px) {
@@ -438,4 +428,3 @@ main {
         text-align: center;
     }
 }
-
