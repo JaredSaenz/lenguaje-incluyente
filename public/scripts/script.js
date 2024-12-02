@@ -75,45 +75,81 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Añadir este código al final del archivo JavaScript existente
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const toggleLentesButton = document.getElementById('toggle-lentes');
+    const textosOriginales = [];
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 7; i++) {
         const ejemploParrafo = document.getElementById(`ejemplo-parrafo-${i}`);
-        // Guardamos el texto original para restaurarlo cuando sea necesario
-        const textoOriginal = ejemploParrafo.textContent;
-        
+
         if (ejemploParrafo != null) {
+            textosOriginales.push(ejemploParrafo.textContent);
+            console.log('iteración:', i);
+
             // Función para aplicar correcciones al párrafo
             function aplicarCorrecciones(texto) {
-                return texto
-                    .replace(/Los empleados/g, '<span class="correccion" title="Sugerencia: El personal"><del>Los empleados</del> El personal</span>')
-                    .replace(/sus jefes/g, '<span class="correccion" title="Sugerencia: la dirección"><del>sus jefes</del> la dirección</span>')
-                    .replace(/Cada uno/g, '<span class="correccion" title="Sugerencia: Cada persona"><del>Cada uno</del> Cada persona</span>');
-            }   
-        } 
-    // Toggle para activar/desactivar los lentes violeta
-    toggleLentesButton.addEventListener('click', function() {
-        ejemploParrafo.classList.toggle('lentes-activos');
-        const img = this.querySelector('img');
-        
-        if (ejemploParrafo.classList.contains('lentes-activos')) {
-            // Mostrar el texto corregido cuando los lentes violeta están activos
-            ejemploParrafo.innerHTML = aplicarCorrecciones(textoOriginal);
-            img.src = 'public/images/gafas_violeta.webp';
-            this.setAttribute('aria-label', 'Desactivar lentes violeta');
-        } else {
-            // Restaurar el texto original cuando los lentes violeta no están activos
-            ejemploParrafo.innerHTML = textoOriginal;
-            img.src = 'public/images/gafas_violeta.webp';
-            this.setAttribute('aria-label', 'Activar lentes violeta');
-        }
-    });
-    }
+                let listaCorregir = [];
+                let listaCorreccion = [];
 
-    
-    
+                // Asignar listas según el valor de i
+                if (i === 1) {
+                    listaCorregir = ['Los empleados organizan', 'uno', 'los encargados'];
+                    listaCorreccion = ['El personal organiza', 'persona', 'los encargados y las encargadas'];
+                } else if (i === 2) {
+                    listaCorregir = ['Será el juez el que lo determine', 'cada jefe'];
+                    listaCorreccion = ['Quién juzgue lo determinará', 'las jefaturas'];
+                } else if (i === 3) {
+                    listaCorregir = ['Los', 'al hombre', 'uno'];
+                    listaCorreccion = ['Las y los', 'a la humanidad', 'cualquiera'];
+                } else if (i === 4) {
+                    listaCorregir = ['ingeniero/a'];
+                    listaCorreccion = ['profesional de la ingeniería (o ingenieras e ingenieros)'];
+                } else if (i === 5) {
+                    listaCorregir = ['presidente','senador','las maestras'];
+                    listaCorreccion = ['presidenta','senadora','el personal docente'];
+                } else if (i === 6) {
+                    listaCorregir = ['de Pérez'];
+                    listaCorreccion = ['Gómez'];
+                } else if (i === 7) {
+                    listaCorregir = ['l@s funcionari@s'];
+                    listaCorreccion = ['las y los funcionarios'];
+                } 
+
+                // Iterar sobre las listas de corrección y aplicar las sustituciones
+                for (let j = 0; j < listaCorregir.length; j++) {
+                    const expresionRegular = new RegExp(listaCorregir[j], 'g');
+                    texto = texto.replace(
+                        expresionRegular,
+                        `<span class="correccion" title="Sugerencia: ${listaCorreccion[j]}">
+                            <del>${listaCorregir[j]}</del> ${listaCorreccion[j]}
+                        </span>`
+                    );
+                }
+
+                return texto;
+            }
+
+            const textoOriginal = textosOriginales[i - 1];
+
+            // Toggle para activar/desactivar los lentes violeta
+            toggleLentesButton.addEventListener('click', function () {
+                ejemploParrafo.classList.toggle('lentes-activos');
+                const img = this.querySelector('img');
+
+                if (ejemploParrafo.classList.contains('lentes-activos')) {
+                    // Mostrar el texto corregido cuando los lentes violeta están activos
+                    ejemploParrafo.innerHTML = aplicarCorrecciones(textoOriginal);
+                    img.src = 'public/images/gafas_violeta.webp';
+                    this.setAttribute('aria-label', 'Desactivar lentes violeta');
+                } else {
+                    // Restaurar el texto original cuando los lentes violeta no están activos
+                    ejemploParrafo.innerHTML = textoOriginal;
+                    img.src = 'public/images/gafas_violeta.webp';
+                    this.setAttribute('aria-label', 'Activar lentes violeta');
+                }
+            });
+        }
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -139,4 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // Resto del código JavaScript existente...
 });
