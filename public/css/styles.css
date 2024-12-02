@@ -78,7 +78,6 @@ body {
 }
 
 .hero-section {
-    /* min-height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -158,8 +157,6 @@ h1 {
         margin: 0 5px;
     }
 }
-
-/* Añadir estos estilos al archivo CSS existente */
 
 .carousel {
     position: relative;
@@ -274,7 +271,6 @@ main {
     margin-top: 60px;
 }
 
-/* Estilos para la sección de lenguaje incluyente */
 .tips-container {
     background-color: rgba(138, 43, 226, 0.1);
     border-radius: 10px;
@@ -312,16 +308,17 @@ main {
     padding: 20px;
 }
 
+/* Estilo actualizado para el botón lentes */
 .lentes-button {
     position: fixed;
-    right: 10px;            /* Fijado en el lado derecho */
-    top: 100%;               /* Centrado verticalmente */
-    transform: translateY(-50%);  /* Ajuste preciso al 50% de la pantalla */
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     background-color: var(--color-purple);
     border: none;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 100px; /* Aumento del tamaño */
+    height: 100px; /* Aumento del tamaño */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -333,14 +330,14 @@ main {
 
 @media (max-width: 768px) {
     .lentes-button {
-        right: 5px;
-        width: 36px;
-        height: 36px;
+        right: 10px;
+        width: 80px; /* Ajuste para pantallas más pequeñas */
+        height: 80px; /* Ajuste para pantallas más pequeñas */
     }
 
     .lentes-button img {
-        width: 28px;
-        height: 28px;
+        width: 40px; /* Aumento del tamaño de la imagen dentro del botón */
+        height: 40px;
     }
 }
 
