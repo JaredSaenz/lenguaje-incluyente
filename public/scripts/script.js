@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     listaCorreccion = ['Gómez'];
                 } else if (i === 7) {
                     listaCorregir = ['l@s funcionari@s'];
-                    listaCorreccion = ['las y los funcionarios'];
+                    listaCorreccion = ['los funcionarios y las funcionarias'];
                 } 
 
                 // Iterar sobre las listas de corrección y aplicar las sustituciones
